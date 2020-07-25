@@ -1,0 +1,71 @@
+"=============================================================================
+" vimrc --- Entry file for vim
+" Copyright (c) 2016-2017 Shidong Wang & Contributors
+" Author: Shidong Wang < wsdjeg at 163.com >
+" URL: https://spacevim.org
+" License: GPLv3
+"=============================================================================
+
+" Note: Skip initialization for vim-tiny or vim-small.
+if 1
+    let g:_spacevim_if_lua = 0
+    if has('lua')
+        if has('win16') || has('win32') || has('win64')
+            let s:plugin_dir = fnamemodify(expand('<sfile>'), ':h').'\lua'
+            let s:str = s:plugin_dir . '\?.lua;' . s:plugin_dir . '\?\init.lua;'
+        else
+            let s:plugin_dir = fnamemodify(expand('<sfile>'), ':h').'/lua'
+            let s:str = s:plugin_dir . '/?.lua;' . s:plugin_dir . '/?/init.lua;'
+        endif
+        silent! lua package.path=vim.eval("s:str") .. package.path
+        if empty(v:errmsg)
+            let g:_spacevim_if_lua = 1
+        endif
+    endif
+    execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/main.vim'
+endif
+" vim:set et sw=2
+
+if &compatible
+  set nocompatible
+endif
+
+
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  " if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+    call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  " endif
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+filetype plugin indent on
+syntax enable
+set clipboard=unnamedplus
+nnoremap <C-Bslash> :NERDTreeToggle<CR>
+imap <C-BS> <C-W>
+set mouse=a
+
+call plug#begin('~/.vim/plugged')
+Plug 'evanleck/vim-svelte'
+call plug#end()
+
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_open_on_console_startup = 0
+
+let g:NERDTreeHijackNetrw=0
+augroup NERDTreeHijackNetrw
+    autocmd VimEnter * silent! autocmd! FileExplorer
+augroup END
+
+let loaded_netrwPlugin = 1
+
