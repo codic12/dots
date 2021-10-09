@@ -1,0 +1,169 @@
+[colors]
+background = ${xrdb:color0:#291E1B}
+foreground = ${xrdb:color15:#C8BAA4}
+
+[bar/bar]
+enable-ipc=true
+height = 28
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding=2
+font-0 = Terminus:size=16;3
+font-1 = Hack Nerd Font JBM Ligatured:size=11;3
+
+dpi = 100
+
+modules-left = ewmh 
+modules-center = time 
+modules-right = pulseaudio cpu memory battery
+tray-position=right
+
+[module/ewmh]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = false
+
+icon-default = 
+label-active =   
+label-occupied = %icon%  
+label-urgent = %icon%  
+label-empty = %icon%  
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-padding = 1
+format-foreground = ${colors.foreground}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-padding = 2
+format-prefix = " "
+format-foreground = ${colors.foreground}
+label = %percentage_used%%
+
+[module/time]
+type = internal/date
+interval = 10
+format-padding = 3
+
+time = "%H:%M"
+date = "%A %d %b"
+
+label = %date%, %time%
+label-padding = 2
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-padding = 2
+format-volume = <ramp-volume><label-volume>
+label-volume = %percentage:4:4%%
+use-ui-max = false
+interval = 5
+
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+
+
+format-muted-padding = 2
+label-muted = "  muted"   
+label-muted-background = ${colors.background}
+label-muted-foreground = ${colors.foreground}
+
+
+[module/battery]
+type = internal/battery
+full-at = 100
+time-format = %H:%M
+battery = BAT0
+adapter = ADP0
+format-charging = <animation-charging> <label-charging>
+;label-charging = %percentage%% (%time%)
+label-charging = %percentage%%
+format-discharging = <ramp-capacity> <label-discharging>
+;label-discharging = %percentage%% (%time%)
+label-discharging = %percentage%%
+format-full = <label-full>
+;label-charging-underline = ${colors.tertiary}
+;label-discharging-underline = ${colors.tertiary}
+
+
+format-charging-underline = ${colors.foreground}
+format-discharging-underline = ${colors.foreground}
+format-full-prefix = ""
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 =  
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+ramp-capacity-0-foreground = ${colors.foreground}
+ramp-capacity-foreground   = ${colors.foreground}
+bar-capacity-width = 10
+
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
+
+animation-charging-framerate = 750
+
+label-font = 1
+
+; ramp-capacity-0-underline = ${colors.tertiary}
+; ramp-capacity-1-underline = ${colors.tertiary}
+; ramp-capacity-2-underline = ${colors.tertiary}
+; ramp-capacity-3-underline = ${colors.tertiary}
+; ramp-capacity-4-underline = ${colors.tertiary}
+;
+; animation-charging-0-underline = ${colors.tertiary}
+; animation-charging-1-underline = ${colors.tertiary}
+; animation-charging-2-underline = ${colors.tertiary}
+; animation-charging-3-underline = ${colors.tertiary}
+; animation-charging-4-underline = ${colors.tertiary}
+
+; Uncomment these for anmated discharging battery underline
+; ramp-capacity-0-underline = ${colors.primary}
+; ramp-capacity-1-underline = ${colors.primary}
+; ramp-capacity-2-underline = ${colors.tertiary}
+; ramp-capacity-3-underline = ${colors.tertiary}
+; ramp-capacity-4-underline = ${colors.tertiary}
+
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
+                      
+

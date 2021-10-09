@@ -1,0 +1,5 @@
+#!/bin/bash
+feh --bg-scale ~/Pictures/mishaal-zahed-jhjixIHT5cg-unsplash.jpg # set wallpaper
+redshift -O3200 # night-light filter, which I like to keep on @ all times
+polybar bar & # start bar
+sxhkd &# start keyboard handling daemon
