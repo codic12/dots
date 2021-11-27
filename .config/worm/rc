@@ -1,0 +1,5 @@
+#!/bin/bash
+redshift -O 3200
+feh --bg-scale ~/Pictures/Light-Floral-01.png
+tint2 -c ~/.config/tint2/tint2rc &
+sxhkd
