@@ -2,4 +2,11 @@
 redshift -O 3200
 feh --bg-scale ~/Pictures/Light-Floral-01.png
 tint2 -c ~/.config/tint2/tint2rc &
+picom &
 sxhkd
+~/worm/wormc border-width 0
+~/worm/wormc frame-pixel $((16#ffdfdfdf))
+~/worm/wormc text-pixel $((16#ff000000))
+~/worm/wormc text-font Terminus:size=8
+~/worm/wormc gaps 5
+~/worm/wormc layout floating
