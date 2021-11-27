@@ -1,9 +1,10 @@
 #!/bin/bash
 redshift -O 3200
-feh --bg-scale ~/Pictures/Light-Floral-01.png
+feh --bg-scale ~/Pictures/Light-Floral-02.png
 tint2 -c ~/.config/tint2/tint2rc &
+tint2 -c ~/.config/tint2/tint2rcright &
 picom &
-sxhkd
+sxhkd& 
 ~/worm/wormc border-width 0
 ~/worm/wormc frame-pixel $((16#ffdfdfdf))
 ~/worm/wormc text-pixel $((16#ff000000))
